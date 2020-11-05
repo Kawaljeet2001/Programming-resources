@@ -9,25 +9,32 @@ int main()
         freopen("output.txt" , "w" , stdout);
     #endif
 
-   
-    int n , sum=0 , n2=0, last = 0;
+    int n;
     cin>>n;
-    n2 = n;
-    while(n>0)
-    {   
-        last = n%10;
-        sum += pow(last , 3);
-        n=n/10;
+
+    vector<int> v(n);
+
+    for(int i=0;i<n;i++)
+    cin>>v[i];
+
+    int sum;
+    cin>>sum;
+
+    int s = 0 , en = 0;
+    int curr = 0;
+
+    while(sum < curr + v[en] && en<n)
+    {
+        curr+=v[en];
+        en++;
     }
 
-    
+    while(curr!=sum)
+    {
+        curr-=v[s];
+        s++;
+    }
 
-    if(n2 == sum)
-    cout<<"Armstrong Number";
+    cout<<s+1<<" "<<en+1;
 
-    else
-    cout<<"Not an armstrong number";
-    
-
-    return 0;
 }
